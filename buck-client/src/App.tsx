@@ -65,9 +65,6 @@ function App() {
     connectSocket();
     joinRoom();
   }, []);
-  useEffect(() => {
-    connectSocket();
-  }, []);
 
 
   const gameContextValue: IGameContextProps = {
