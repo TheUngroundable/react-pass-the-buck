@@ -6,7 +6,6 @@ import GameContext, { IGameContextProps } from "./components/contexts/gameContex
 import { JoinRoom } from "./components/joinRoom/index";
 import { Game } from "./components/game/index";
 import socketService from './services/socketService';
-import gameService from './services/gameService';
 
 const WelcomeText = styled.h1`
   margin: 0;
@@ -32,7 +31,6 @@ const MainContainer = styled.div`
 
 
 function App() {
-  const [roomName, setRoomName] = useState("");
 
   const [isInRoom, setInRoom] = useState(false);
   const [playerSymbol, setPlayerSymbol] = useState<"x" | "o">("x");
@@ -47,23 +45,8 @@ function App() {
       });
   };
 
-  const joinRoom = async () => {
-
-    setRoomName('123')
-
-    const socket = socketService.socket;
-
-    if (!roomName || roomName.trim() === "" || !socket) return;
-    const joined = await gameService
-      .joinGameRoom(socket, roomName)
-      .catch((err) => {
-        alert(err);
-      });
-  }
-
   useEffect(() => {
     connectSocket();
-    joinRoom();
   }, []);
 
 
