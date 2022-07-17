@@ -13,7 +13,7 @@ class SocketService {
         rs(this.socket as Socket)
       })
 
-      this.socket.on('connect_error', (err) => {
+      this.socket.on('connect_error', (err: any) => {
         console.log('Connection error: ', err)
         rj(err)
       })
