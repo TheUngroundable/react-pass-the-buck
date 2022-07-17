@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
 import { io } from "socket.io-client";
-import socketService from "./services/socketService";
+import socketService from "../../../buck-client/src/services/socketService";
 import { JoinRoom } from "./components/joinRoom";
 import GameContext, { IGameContextProps } from "./gameContext";
 import { Game } from "./components/game";
