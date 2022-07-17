@@ -65,7 +65,7 @@ function App() {
   return (
     <GameContext.Provider value={gameContextValue}>
       <AppContainer>
-        <WelcomeText>Welcome to Tic-Tac-Toe</WelcomeText>
+        <WelcomeText>Welcome to Pass The Buck</WelcomeText>
         <MainContainer>
           {!isInRoom && <JoinRoom />}
           {isInRoom && <Game />}
