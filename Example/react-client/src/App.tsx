@@ -6,6 +6,7 @@ import { JoinRoom } from "./components/joinRoom";
 import GameContext, { IGameContextProps } from "./gameContext";
 import { Game } from "./components/game";
 import socketService from "./services/socketService";
+import gameService from "./services/gameService";
 
 const AppContainer = styled.div`
   width: 100%;
