@@ -1,12 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import './App.css';
-import GameContext, { IGameContextProps } from "./components/contexts/gameContext";
+import "./App.css";
+import GameContext, {
+  IGameContextProps,
+} from "./components/contexts/gameContext";
 import { JoinRoom } from "./components/joinRoom/index";
 import { Game } from "./components/game/index";
-import socketService from './services/socketService';
-import gameService from './services/gameService';
+import socketService from "./services/socketService";
+import gameService from "./services/gameService";
+import BallBoard from "./components/ballboard/BallBoard";
 
 const WelcomeText = styled.h1`
   margin: 0;
@@ -30,7 +33,6 @@ const MainContainer = styled.div`
   justify-content: center;
 `;
 
-
 function App() {
   const [roomName, setRoomName] = useState("");
 
@@ -38,8 +40,8 @@ function App() {
   const [playerSymbol, setPlayerSymbol] = useState<"x" | "o">("x");
   const [isPlayerTurn, setPlayerTurn] = useState(false);
   const [isGameStarted, setGameStarted] = useState(false);
-
- const connectSocket = async () => {
+  /*
+  const connectSocket = async () => {
     const socket = await socketService
       .connect("http://localhost:9000")
       .catch((err) => {
@@ -47,9 +49,8 @@ function App() {
       });
   };
 
-  const joinRoom = async () => {
-
-    setRoomName('123')
+  const joinRoom = async () => {
+    setRoomName("123");
 
     const socket = socketService.socket;
 
@@ -59,13 +60,12 @@ function App() {
       .catch((err) => {
         alert(err);
       });
-  }
-
+  };
+*/
   useEffect(() => {
-    connectSocket();
-    joinRoom();
+    //  connectSocket();
+    //  joinRoom();
   }, []);
-
 
   const gameContextValue: IGameContextProps = {
     isInRoom,
@@ -78,17 +78,19 @@ function App() {
     setGameStarted,
   };
 
-
   return (
-    <GameContext.Provider value={gameContextValue}>
+    <>
+      CIAOo
+      <BallBoard />
+      {/*<GameContext.Provider value={gameContextValue}>
       <AppContainer>
         <WelcomeText>Welcome to Tic-Tac-Toe</WelcomeText>
         <MainContainer>
           {!isInRoom && <JoinRoom />}
           {isInRoom && <Game />}
         </MainContainer>
-      </AppContainer>
-    </GameContext.Provider>
+  </AppContainer> </GameContext.Provider>*/}
+    </>
   );
 }
 

@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "../../buck-client/src/services"]
+  "include": ["src"]
 }
