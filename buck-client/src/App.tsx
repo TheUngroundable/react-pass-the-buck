@@ -5,10 +5,6 @@ import "./App.css";
 import GameContext, {
   IGameContextProps,
 } from "./components/contexts/gameContext";
-import { JoinRoom } from "./components/joinRoom/index";
-import { Game } from "./components/game/index";
-import socketService from "./services/socketService";
-import gameService from "./services/gameService";
 import BallBoard from "./components/ballboard/BallBoard";
 
 const WelcomeText = styled.h1`
@@ -80,16 +76,7 @@ function App() {
 
   return (
     <>
-      CIAOo
       <BallBoard />
-      {/*<GameContext.Provider value={gameContextValue}>
-      <AppContainer>
-        <WelcomeText>Welcome to Tic-Tac-Toe</WelcomeText>
-        <MainContainer>
-          {!isInRoom && <JoinRoom />}
-          {isInRoom && <Game />}
-        </MainContainer>
-  </AppContainer> </GameContext.Provider>*/}
     </>
   );
 }

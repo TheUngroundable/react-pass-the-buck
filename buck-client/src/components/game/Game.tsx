@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import gameContext from "../contexts/gameContext";
-import gameService from "../../services/gameService";
-import socketService from "../../services/socketService";
+import gameService from "../../services/gameService/GameService";
+import socketService from "../../services/socketService/SocketService";
 
 const GameContainer = styled.div`
   display: flex;
@@ -181,7 +181,7 @@ export function Game() {
 
   const handleGameWin = () => {
     if (socketService.socket)
-      gameService.onGameWin(socketService.socket, (message) => {
+      gameService.onGameWin(socketService.socket, (message: any) => {
         console.log("Here", message);
         setPlayerTurn(false);
         alert(message);

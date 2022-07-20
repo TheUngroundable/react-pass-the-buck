@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { ReactNode, useRef } from "react";
 import styled from "styled-components";
 
 import Ball from "../ball/Ball";
@@ -11,17 +11,18 @@ const MainContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 20%;
 `;
 
 const BallBoard = (props: BallBoardProps) => {
   const ballBoard = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   return (
-    <MainContainer>
-      <div ref={ballBoard}>
+    <>
+      <MainContainer>
         <Ball ballBoardRef={ballBoard} />
-      </div>
-    </MainContainer>
+      </MainContainer>
+    </>
   );
 };
 

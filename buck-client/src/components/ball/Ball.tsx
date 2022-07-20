@@ -1,20 +1,41 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import styled from "styled-components";
+import Draggable from "react-draggable";
 
 interface BallProps {
   ballBoardRef: any;
 }
 
+const AnotherBallStyle = styled.div`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: navy;
+  position: absolute;
+  top: 400px;
+  left: 50px;
+`;
+
+const BallStyle = styled.div`
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #480e6e;
+  border-radius: 50%;
+`;
+
 const Ball = (props: BallProps) => {
   const ballBoardRef = props.ballBoardRef;
-  const ball = useRef() as React.MutableRefObject<HTMLDivElement>;
-  const ballProps = gsap.getProperty(ball);
-  const radius = ball.current && ball.current.getBoundingClientRect().width / 2;
-  const tracker = InertiaPlugin.track(ball, "x,y")[0];
+  //const ball = useRef() as React.MutableRefObject<HTMLDivElement>;
+  //const ballProps = gsap.getProperty(ball);
+  // const radius = ball.current && ball.current.getBoundingClientRect().width / 2;
+  // const tracker = InertiaPlugin.track(ball, "x,y")[0];
 
   const friction = -0.5;
 
-  useEffect(() => {
+  /*useEffect(() => {
     let vw = window.innerWidth;
     let vh = window.innerHeight;
 
@@ -32,8 +53,8 @@ const Ball = (props: BallProps) => {
       vw = window.innerWidth;
       vh = window.innerHeight;
     });
-  }, []);
-
+  }, []);*/
+  /*
   const draggable =
     ball.current &&
     ballBoardRef &&
@@ -97,14 +118,43 @@ const Ball = (props: BallProps) => {
       animateBounce(xPos, yPos, vx, vy);
     }
   }
+*/
+
+  const handleDrop = (e: any) => {
+    //  this.setState({activeDrags: --this.state.activeDrags});
+    if (e.target.classList.contains("drop-target")) {
+      alert("Dropped!");
+      e.target.classList.remove("hovered");
+    }
+  };
 
   return (
     <>
-      {/*<draggable> */}
-      <p>pipo</p>
-      <div ref={ball}>ciao</div>
+      <Draggable
+        //axis="x"
+        //handle=".handle"
+        //defaultPosition={{ x: 0, y: 0 }}
+        //position={null}
+        //grid={[25, 25]}
+        scale={1}
+        // onStart={handleStart}
+        // onDrag={handleDrop}
+        //</>  onStop={handleStop}
+      >
+        <AnotherBallStyle>
+          <div></div>
+        </AnotherBallStyle>
+      </Draggable>
     </>
   );
 };
 
 export default Ball;
+/*
+   bounds: ballBoardRef,
+      onPress() {
+        gsap.killTweensOf(ball);
+        this.update();
+      },
+      onDragEnd: animateBounce,
+      onDragEndParams: [],*/
