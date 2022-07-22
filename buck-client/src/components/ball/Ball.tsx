@@ -28,14 +28,13 @@ const BallStyle = styled.div`
 
 const Ball = (props: BallProps) => {
   const ballBoardRef = props.ballBoardRef;
-  //const ball = useRef() as React.MutableRefObject<HTMLDivElement>;
-  //const ballProps = gsap.getProperty(ball);
-  // const radius = ball.current && ball.current.getBoundingClientRect().width / 2;
-  // const tracker = InertiaPlugin.track(ball, "x,y")[0];
-
+  const ball = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const ballProps = gsap.getProperty(ball);
+  //const radius = ball.current && ball.current.getBoundingClientRect().width / 2;
+  //const tracker = InertiaPlugin.track(ball, "x,y")[0];
   const friction = -0.5;
 
-  /*useEffect(() => {
+  useEffect(() => {
     let vw = window.innerWidth;
     let vh = window.innerHeight;
 
@@ -43,7 +42,7 @@ const Ball = (props: BallProps) => {
       overwrite: true,
     });
 
-    gsap.set(ball, {
+    gsap.set(ball.current, {
       xPercent: -50,
       yPercent: -50,
       x: vw / 2,
@@ -53,7 +52,7 @@ const Ball = (props: BallProps) => {
       vw = window.innerWidth;
       vh = window.innerHeight;
     });
-  }, []);*/
+  }, []);
   /*
   const draggable =
     ball.current &&
@@ -137,12 +136,18 @@ const Ball = (props: BallProps) => {
         //position={null}
         //grid={[25, 25]}
         scale={1}
-        // onStart={handleStart}
+        onStop={() => {
+          gsap.to(ball.current, {
+            duration: 2.5,
+            ease: "bounce.in",
+            y: -500,
+          });
+        }}
         // onDrag={handleDrop}
         //</>  onStop={handleStop}
       >
         <AnotherBallStyle>
-          <div></div>
+          <div ref={ball}></div>
         </AnotherBallStyle>
       </Draggable>
     </>
